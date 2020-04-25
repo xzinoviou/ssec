@@ -9,20 +9,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-
 @RestController
-@RequestMapping("/")
-public class StatusController {
+@RequestMapping("/user")
+public class StatusUserController {
 
     private final StatusUtil statusUtil;
 
-    public StatusController(StatusUtil statusUtil) {
+    public StatusUserController(StatusUtil statusUtil) {
         this.statusUtil = statusUtil;
     }
 
     @GetMapping
-    public ResponseEntity<List<StatusDto>> getStatuses() {
+    public ResponseEntity<List<StatusDto>> getUserAuthStatuses() {
         return ResponseEntity.ok(statusUtil.getStatuses());
     }
-
 }

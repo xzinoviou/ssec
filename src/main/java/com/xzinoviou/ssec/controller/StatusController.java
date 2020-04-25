@@ -23,13 +23,18 @@ public class StatusController {
         this.statusUtil = statusUtil;
     }
 
+    @GetMapping
+    public ResponseEntity<List<StatusDto>> getStatuses() {
+        return ResponseEntity.ok(statusUtil.getStatuses());
+    }
+
     @GetMapping("/admin")
-    public ResponseEntity<List<StatusDto>> getAdminAuthorizedStatus() {
+    public ResponseEntity<List<StatusDto>> getAdminAuthStatuses() {
         return ResponseEntity.ok(statusUtil.getStatuses());
     }
 
     @GetMapping("/admin/{id}")
-    public ResponseEntity<StatusDto> getStatus(@PathVariable Integer id) {
+    public ResponseEntity<StatusDto> getAdminAuthStatusesById(@PathVariable Integer id) {
         return ResponseEntity.ok(statusUtil.getStatuses().stream()
                 .filter(s -> s.getId().equals(id))
                 .findFirst()
@@ -37,7 +42,7 @@ public class StatusController {
     }
 
     @GetMapping("/user")
-    public ResponseEntity<List<StatusDto>> getUserauthorizedStatus() {
+    public ResponseEntity<List<StatusDto>> getUserAuthStatuses() {
         return ResponseEntity.ok(statusUtil.getStatuses());
     }
 

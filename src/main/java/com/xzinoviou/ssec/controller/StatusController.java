@@ -23,16 +23,22 @@ public class StatusController {
         this.statusUtil = statusUtil;
     }
 
-    @GetMapping
-    public ResponseEntity<List<StatusDto>> getStatus() {
+    @GetMapping("/admin")
+    public ResponseEntity<List<StatusDto>> getAdminAuthorizedStatus() {
         return ResponseEntity.ok(statusUtil.getStatuses());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/admin/{id}")
     public ResponseEntity<StatusDto> getStatus(@PathVariable Integer id) {
         return ResponseEntity.ok(statusUtil.getStatuses().stream()
                 .filter(s -> s.getId().equals(id))
                 .findFirst()
                 .orElseGet(() -> new StatusDto(100, NOT_FOUND.value(), NOT_FOUND.getReasonPhrase())));
     }
+
+    @GetMapping("/user")
+    public ResponseEntity<List<StatusDto>> getUserauthorizedStatus() {
+        return ResponseEntity.ok(statusUtil.getStatuses());
+    }
+
 }

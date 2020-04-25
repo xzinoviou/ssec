@@ -24,15 +24,26 @@ public class StatusController {
     }
 
     @GetMapping
-    public ResponseEntity<List<StatusDto>> getStatus() {
+    public ResponseEntity<List<StatusDto>> getStatuses() {
         return ResponseEntity.ok(statusUtil.getStatuses());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<StatusDto> getStatus(@PathVariable Integer id) {
+    @GetMapping("/admin")
+    public ResponseEntity<List<StatusDto>> getAdminAuthStatuses() {
+        return ResponseEntity.ok(statusUtil.getStatuses());
+    }
+
+    @GetMapping("/admin/{id}")
+    public ResponseEntity<StatusDto> getAdminAuthStatusesById(@PathVariable Integer id) {
         return ResponseEntity.ok(statusUtil.getStatuses().stream()
                 .filter(s -> s.getId().equals(id))
                 .findFirst()
                 .orElseGet(() -> new StatusDto(100, NOT_FOUND.value(), NOT_FOUND.getReasonPhrase())));
     }
+
+    @GetMapping("/user")
+    public ResponseEntity<List<StatusDto>> getUserAuthStatuses() {
+        return ResponseEntity.ok(statusUtil.getStatuses());
+    }
+
 }

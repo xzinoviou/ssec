@@ -15,13 +15,11 @@ import javax.sql.DataSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    DataSource dataSource;
+    private
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("select username,password,enabled from users where username = ?")
-                .authoritiesByUsernameQuery("select username,authority from authorities where username = ?");
+        auth.userDetailsService();
     }
 
     @Override

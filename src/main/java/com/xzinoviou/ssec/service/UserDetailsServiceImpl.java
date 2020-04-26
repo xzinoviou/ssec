@@ -1,6 +1,6 @@
 package com.xzinoviou.ssec.service;
 
-import com.xzinoviou.ssec.domain.JpaUserDetails;
+import com.xzinoviou.ssec.domain.model.JpaUserDetails;
 import com.xzinoviou.ssec.repository.AppUserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
-import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
 @Component
 public class StatusUtil {

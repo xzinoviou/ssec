@@ -1,4 +1,4 @@
-package com.xzinoviou.ssec.domain;
+package com.xzinoviou.ssec.domain.model;
 
 import com.xzinoviou.ssec.domain.jpa.AppUser;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.stream.Collectors;
 
 @Service
 public class JpaUserDetails implements UserDetails {

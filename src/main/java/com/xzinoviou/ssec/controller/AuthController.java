@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AuthController {
 
-    Jwt
-
     @PostMapping("/authorize")
     public ResponseEntity<JwtDto> authorize(AuthRequestDto authRequestDto) {
         return new ResponseEntity<>();

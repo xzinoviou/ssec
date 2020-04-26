@@ -4,9 +4,11 @@ import com.xzinoviou.ssec.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
-
+@Service
 public class UserDetailsImpl implements UserDetails {
 
     private UserRepository userRepository;
@@ -17,7 +19,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return userRepository.
+        return new ArrayList<>();
     }
 
     @Override

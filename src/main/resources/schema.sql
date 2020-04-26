@@ -1,4 +1,4 @@
-app_user, CREATE TABLE `app_user` (
+CREATE TABLE `app_user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) DEFAULT NULL,
   `enabled` bit(1) NOT NULL,

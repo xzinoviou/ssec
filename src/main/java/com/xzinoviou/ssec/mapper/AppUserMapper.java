@@ -21,6 +21,9 @@ public class AppUserMapper implements GenericMapper<AppUser, AppUserRequestDto> 
 
     @Override
     public AppUser convertToEntity(AppUserRequestDto appUserRequestDto) {
-        return objectMapper.convertValue(appUserRequestDto, AppUser.class);
+        AppUser appUser = objectMapper.convertValue(appUserRequestDto, AppUser.class);
+        appUser.setEnabled(true);
+        appUser.setExpired(false);
+        return appUser;
     }
 }

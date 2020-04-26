@@ -27,7 +27,7 @@ public class AppUserController {
 
     @GetMapping
     public ResponseEntity<List<AppUser>> getAllAppUsers() {
-        return ResponseEntity.ok(appUserService.fineAllAppUsers());
+        return ResponseEntity.ok(appUserService.findAllAppUsers());
     }
 
     @GetMapping("/{id}")

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Transactional
 @Service
@@ -31,8 +32,7 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public AppUser createAppUser(AppUser appUser) {
 
-        Set<Long> ids = new HashSet<>();
-        appUser.getRoles().forEach(r -> ids.add(r.getId()));
+        Set<Long> ids = appUser.getRoles().stream().map(Role::getId).collect(Collectors.toSet());
 
         Set<Role> roles = roleRepository.findRolesByIdsIn(ids);
 
@@ -46,7 +46,7 @@ public class AppUserServiceImpl implements AppUserService {
     }
 
     @Override
-    public List<AppUser> fineAllAppUsers() {
+    public List<AppUser> findAllAppUsers() {
         return appUserRepository.findAll();
     }
 

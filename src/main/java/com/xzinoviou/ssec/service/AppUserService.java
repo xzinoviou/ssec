@@ -8,7 +8,7 @@ public interface AppUserService {
 
     AppUser createAppUser(AppUser appUser);
 
-    List<AppUser> fineAllAppUsers();
+    List<AppUser> findAllAppUsers();
 
     AppUser findById(Long id);
 }

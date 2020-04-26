@@ -2,7 +2,6 @@ package com.xzinoviou.ssec.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -14,7 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
-@PropertySource(value = "classpath:application.properties")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -30,8 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/admin", "/admin/**").hasRole("ADMIN")
                 .antMatchers("/user", "/user/**").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/").permitAll()
-                //.antMatchers("/", "/app-user", "/app-user/**").permitAll()
+                .antMatchers("/", "/app-user", "/app-user/**").permitAll()
                 .and().formLogin();
     }
 

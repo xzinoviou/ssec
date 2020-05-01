@@ -15,7 +15,6 @@ public class StatusUserController {
 
     private final StatusUtil statusUtil;
 
-
     public StatusUserController(StatusUtil statusUtil) {
         this.statusUtil = statusUtil;
     }

@@ -1,7 +1,8 @@
 package com.xzinoviou.ssec.filter;
 
-import com.xzinoviou.ssec.jwt.JwtConstant;
+import ch.qos.logback.core.util.StringCollectionUtil;
 import com.xzinoviou.ssec.jwt.JwtService;
+import org.dom4j.util.StringUtils;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,6 +24,12 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
 
+    public static final String AUTHORIZATION = "Authorization";
+
+    public static final String BEARER = "Bearer";
+
+    public static final String SPACE = " ";
+
     public JwtAuthFilter(UserDetailsService userDetailsServiceImpl, JwtService jwtService) {
         this.userDetailsService = userDetailsServiceImpl;
         this.jwtService = jwtService;
@@ -31,14 +38,14 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
 
-        final String authorizationHeader = httpServletRequest.getHeader(JwtConstant.AUTHORIZATION);
+        final String authorizationHeader = httpServletRequest.getHeader(AUTHORIZATION);
 
         String username = null;
         String token = null;
 
-        if (authorizationHeader != null && authorizationHeader.startsWith(JwtConstant.BEARER)) {
+        if (authorizationHeader != null && authorizationHeader.startsWith(BEARER)) {
 
-            token = authorizationHeader.split(JwtConstant.SPACE)[1];
+            token = authorizationHeader.split(SPACE)[1];
             username = jwtService.extractUsername(token);
 
         }

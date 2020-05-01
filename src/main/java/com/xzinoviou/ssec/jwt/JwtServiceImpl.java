@@ -15,8 +15,6 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.function.Function;
 
-import static com.xzinoviou.ssec.jwt.JwtConstant.SECRET;
-
 @Service
 @PropertySource("classpath:application.properties")
 public class JwtServiceImpl implements JwtService {

@@ -1,0 +1,24 @@
+#spring security user
+spring:
+  security:
+    user:
+      name: user
+      password: user
+
+
+#oauth2
+security:
+  oauth2:
+    client:
+      client-id: 9cfeb5c26e1f580cd6a3
+      client-secret: 9010a3b322065543bb536da1673fd001db8f6e0e
+      access-token-uri: https://github.com/login/oauth/access_token
+      user-authorization-uri: https://github.com/login/oauth/authorize
+      token-name: remote_dev_auth_token
+      authentication-scheme: form
+      client-authentication-scheme: form
+
+    resource:
+      user-info-uri: https://api.github.com/user
+
+  #code=3d7d3bec7b55b1d8ea19

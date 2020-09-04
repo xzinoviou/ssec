@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/admin", "admin/**").hasRole("ADMIN")
                 .antMatchers("/user", "/user/**").hasRole("USER")
-                .antMatchers("/authorize","/app-user").permitAll()
+                .antMatchers("/authorize", "/app-user").permitAll()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

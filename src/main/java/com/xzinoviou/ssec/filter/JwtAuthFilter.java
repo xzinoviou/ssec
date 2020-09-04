@@ -1,8 +1,6 @@
 package com.xzinoviou.ssec.filter;
 
-import ch.qos.logback.core.util.StringCollectionUtil;
 import com.xzinoviou.ssec.jwt.JwtService;
-import org.dom4j.util.StringUtils;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

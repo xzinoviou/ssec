@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -25,7 +26,7 @@ public class AppUserController {
     }
 
     @PostMapping
-    public ResponseEntity<AppUser> saveAppUser(@RequestBody AppUserRequestDto dto) {
+    public ResponseEntity<AppUser> saveAppUser(HttpServletRequest request, @RequestBody AppUserRequestDto dto) {
         return new ResponseEntity<>(appUserService.createAppUser(mapper.convertToEntity(dto)), HttpStatus.CREATED);
     }
 

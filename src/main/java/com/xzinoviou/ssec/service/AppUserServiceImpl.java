@@ -8,9 +8,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Transactional
 @Service
@@ -31,9 +31,15 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public AppUser createAppUser(AppUser appUser) {
 
-        Set<Long> ids = appUser.getRoles().stream().map(Role::getId).collect(Collectors.toSet());
+        List<Role> dbRoles = roleRepository.findAll();
+        Set<Role> roles = new HashSet<>();
 
-        Set<Role> roles = roleRepository.findRolesByIdsIn(ids);
+        dbRoles.forEach(r -> appUser.getRoles()
+                .forEach(ar -> {
+                    if (ar.getRoleType().name().equals(r.getRoleType().name())) {
+                        roles.add(r);
+                    }
+                }));
 
         appUser.setRoles(roles);
 

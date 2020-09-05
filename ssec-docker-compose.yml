@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql:8.0.16
+    container_name: ssec-jwt-mysql
+    hostname: ssec-jwt-mysql
+    ports:
+      - '3312:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: dev
+      MYSQL_DATABASE: ssec_jwt_db;
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
+
+volumes:
+  mysql-data:
+
+networks:
+  app-network:
+
